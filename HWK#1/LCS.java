@@ -38,6 +38,13 @@ public class LCS {
 			charArray2 = txt2.toCharArray();
 		
 		System.out.println(checkEqual(txt1.length() - 1, txt2.length() - 1));
+		// for(int[] row: recordTable) {
+		// 	for(int i: row) {
+		// 		System.out.printf("%3s", i);
+		// 		}
+		// 	System.out.println("");
+		// }
+
 		}
 		
  	}
