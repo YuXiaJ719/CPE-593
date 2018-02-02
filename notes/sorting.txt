@@ -1,0 +1,27 @@
+1. bubble sort （O(n*n)）
+swap two numbers: add two numbers to a (a = a + b) => b = a - b(now b = (previous) a) => a = a - b (now a = previous b). 
+
+2. improved bubble sort:提前return如果顺序已经对了
+
+3. selection sort: 从屁股后面往前排，每次把最大的数排到最后。
+
+4. Insertion sort: 每次对新加入的数进行排序
+	situations: 1 to 10
+			    1 to 11
+	            11 to 1
+	            duplicate numbers 
+	            randon number generator sets
+
+5. Quick sort: O(nlogn)对半分进行sort然后recurs
+
+6. partial Quick sort: 加入一个阈值，如果需要sort的数组长度小于阈值就不sort了，最后对整个数组insertsort
+
+7. heapsort: O(nlogn)
+
+8. mergesort: 
+
+9. bucket sort: 
+
+10: shuffling: 
+				naiveshuffle:取数插数
+				badshuffle:	随机交换数			

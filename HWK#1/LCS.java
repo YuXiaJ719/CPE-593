@@ -28,32 +28,18 @@ public class LCS {
 			System.out.println(0);
 		else {
 			recordTable = new int[txt1.length() + 1][txt2.length() + 1];
-			
-			Arrays.fill(recordTable[txt1.length()], 0);
-			for(int i = 0; i <= txt1.length(); i++) {
-				recordTable[i][txt2.length()] = 0;
-			}
-			
 			charArray1 = txt1.toCharArray();
 			charArray2 = txt2.toCharArray();
-		
-		System.out.println(checkEqual(txt1.length() - 1, txt2.length() - 1));
-		// for(int[] row: recordTable) {
-		// 	for(int i: row) {
-		// 		System.out.printf("%3s", i);
-		// 		}
-		// 	System.out.println("");
-		// }
-
+			System.out.println(checkEqual(txt1.length(), txt2.length()));
 		}
 		
  	}
 	
 	//Function to compare two strings
 	public static int checkEqual(int a, int b) {
-		for(int i = txt1.length(); i >= 0; i--) {
-			for(int j = txt2.length(); j >= 0; j--) {
-				if(i == txt1.length() || j == txt2.length()) {	
+		for(int i = a; i >= 0; i--) {
+			for(int j = b; j >= 0; j--) {
+				if(i == a || j == b) {	
 					recordTable[i][j] = 0;
 				}
 				else if(charArray1[i] == charArray2[j])
@@ -80,13 +66,3 @@ public class LCS {
 	}
 	
 }
-
-
-/*		for(int[] row: recordTable) {
-for(int i: row) {
-	System.out.printf("%3s", i);
-	
-}
-System.out.println("");
-}
-*/
