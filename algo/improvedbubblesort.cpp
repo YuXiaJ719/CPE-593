@@ -15,6 +15,8 @@ int swap(double &a, double &b){
     return 0;
 }
 
+// readVec function will read a .txt file and convert its numerical contents into a vector
+// (there is one space between two numbers in the .txt file)
 vector<double> readVec(string fileName){
 
     vector<double> vec;
@@ -26,7 +28,7 @@ vector<double> readVec(string fileName){
     }
 
     return vec;
-}
+} 
 
 int bubbleSort(vector<double> &arr){
 
