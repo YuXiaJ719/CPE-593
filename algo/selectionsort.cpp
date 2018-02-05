@@ -29,26 +29,23 @@ vector<double> readVec(){
     return vec;
 }
 
-void insertSort(vector<double> &vec, int n){
+void selectionSort(vector<double> &arr, int n){
 
+    
     for(int i = 0; i < n - 1; i++){
-
-        int room_index = i + 1;
-        int compare_index = i;
-
-        while(vec[room_index] < vec[compare_index] && compare_index >= 0){
-            swap(vec[room_index], vec[compare_index]);
-            room_index = compare_index;
-            compare_index -= 1;
+        int min_index = i;
+        for(int j = i + 1; j < n; j++){
+            if(arr[j] < arr[min_index])
+                min_index = j;
         }
+        swap(arr[i], arr[min_index]);
     }
 }
 
 int main(){
 
     vector<double> vec = readVec();
-    insertSort(vec, int(vec.size()));
-
+    selectionSort(vec, int(vec.size()));
     for(int i = 0; i < vec.size(); i++){
         if(i == 0)
             cout << vec[i];
@@ -57,4 +54,5 @@ int main(){
     }
 
     cout << endl;
+    return 0;
 }
