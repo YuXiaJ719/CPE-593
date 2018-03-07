@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <string>
+#include <fstream>
 #include <vector>
 using namespace std;
 
@@ -12,20 +14,18 @@ void swap(double &a, double &b){
     b = temp;
 }
 
-vector<double> readVec(){
-
+vector<double> readVec(string fileName){
     int n;
     double a;
     vector<double> vec;
 
-    cout << "Enter the length of your array: " << endl;
-    cin >> n;
+    ifstream File(fileName, ios_base::in);
+    File >> n;
 
-    for(int i = 0; i < n; i++){
-        cin >> a;
+    while(!File.eof()){
+        File >> a;
         vec.push_back(a);
     }
-
     return vec;
 }
 
@@ -37,7 +37,6 @@ void quickSort(vector<double> &vec, int start_index, int end_index){
 
     if(start_index >= end_index - 1)
         return;
-    
     else{
         for(int i = start_index; i < pivot_index; i++){
             if(vec[i] <= vec[pivot_index]){
@@ -54,18 +53,14 @@ void quickSort(vector<double> &vec, int start_index, int end_index){
 }
 
 void printVec(vector<double> vec){
-    for(int i = 0; i < vec.size(); i++){
-        if (i == 0)
-            cout << vec[i];
-        else
-            cout << "->" << vec[i];
-    }
+    for(int i = 0; i < vec.size(); i++)
+        cout << vec[i] << ' '; 
 
-    cout << endl;
+    cout << '\n';
 }
 
 int main(){
-    vector<double> vec = readVec();
+    vector<double> vec = readVec("hw3.dat");
     quickSort(vec, 0, int(vec.size()));
     printVec(vec);
 }

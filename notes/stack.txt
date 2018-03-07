@@ -1,0 +1,5 @@
+stack：(LIFO: Last in first out)
+	PUSH function: Add item to top of stack 
+	POP function: Remove item from the top of stack
+
+queue: 

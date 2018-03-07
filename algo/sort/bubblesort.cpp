@@ -34,7 +34,6 @@ int bubbleSort(vector<double> &arr){
     for(int i = 0; i < vecSize - 1; i++){
         for(int j = 0; j < vecSize - i - 1; j++){
             if(arr[j] > arr[j + 1]){
-                cout << arr[j] << endl;
                 swap(arr[j], arr[j+1]);
             }
         }

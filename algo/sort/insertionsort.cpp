@@ -39,7 +39,7 @@ void insertSort(vector<double> &vec, int n){
         while(vec[room_index] < vec[compare_index] && compare_index >= 0){
             swap(vec[room_index], vec[compare_index]);
             room_index = compare_index;
-            compare_index -= 1;
+            compare_index--;
         }
     }
 }

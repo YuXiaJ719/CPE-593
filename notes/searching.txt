@@ -1,0 +1,5 @@
+bad sort: worse case: O(n2) and best case: O(n);
+
+good sort: O(nlogn);
+
+Searching: binary search O(logn)
