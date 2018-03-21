@@ -58,8 +58,10 @@ public:
 	}
 
 	void removeFirst(){
-		if(size == 0)
+        if(size == 0){
 			cout << "No data to delete" << '\n';
+            return;
+        }
 		else if(size == 1){
 			delete head;
 			head = tail = nullptr;
@@ -74,8 +76,10 @@ public:
 	}
 
 	void removeLast(){
-		if(size == 0)
+        if(size == 0){
 			cout << "No data to delete" << '\n';
+            return;
+        }
 		else if(size == 1){
 			delete tail;
 			tail = head = nullptr;
@@ -92,11 +96,15 @@ public:
 	void insert(double v, int pos){
 		if(pos > size - 1){
 			cout << "Out of index" << '\n';
+            return;
 		}else{
 			Node* p = head;
 			for(int i = 0; i < pos;i++)
 				p  = p->next;
-			Node* temp = new Node(v, p->next, p);
+			Node* temp = new Node(v, p, p->prev);
+            p->prev = temp;
+            temp->prev->next = temp;
+            
 		}
 		size++;
 	}
