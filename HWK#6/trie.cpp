@@ -1,3 +1,7 @@
+/*
+ Author: Yu Xia
+ Date: 03/22/2018
+ */
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -60,7 +64,9 @@ public:
 
 int main(){
     TRIE t;
-    ifstream f("hw5.txt");
+    
+    // Insert vocabularies from "hw5.txt" into Trie structure
+    ifstream f("dict.txt");
     char word[256];
     while(!f.eof()){
         f.getline(word, 256);
@@ -68,19 +74,25 @@ int main(){
             continue;
         t.insert(word);
     }
+    f.close();
     
-    char* str1 = (char*)"aardvark";
-    char* str2 = (char*)"auramine";
-    char* str3 = (char*)"djfdask";
-    char* str4 = (char*)"sads";
-    char* str5 = (char*)"djsk";
-
-    cout << str1 << ": " << t.search(str1) << endl;
-    cout << str2 << ": " << t.search(str2) << endl;
-    cout << str3 << ": " << t.search(str3) << endl;
-    cout << str4 << ": " << t.search(str4) << endl;
-    cout << str5 << ": " << t.search(str5) << endl;
-    cout << "aal" << ": " << t.containsPrefix("aal") << endl;
+    // Check if each word in "hw5.txt" can be found in Trie Structure
+    ifstream f2("hw5.txt");
+    while(!f2.eof()){
+        f2.getline(word, 256);
+        // If any word is not in Trie, print it out
+        if(t.search(word))
+            cout << "Word: " << word << "--True." << endl;
+        else
+            cout << "Word: " << word << ": False" << endl;
+        
+        if(t.containsPrefix(word))
+            cout << "Prefix: " << word << "--True" << endl;
+        else
+            cout << "Prefix: " << word << "--False" << endl;
+    }
+    
+    f2.close();
     return 0;
 }
 

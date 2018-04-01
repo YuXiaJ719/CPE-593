@@ -1,0 +1,1 @@
+二叉树左边的subtree都会小于它的parent，右边的subtree都会大于它的parent。
