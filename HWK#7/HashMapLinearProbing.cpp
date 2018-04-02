@@ -6,23 +6,23 @@
 #include <iostream>
 using namespace std;
 
-template<typename key, typename value>
 class HashMapLinearProbing{
 private:
     class Bucket{
     public:
-        key k;
-        value v;
+        uint32_t k;
+        uint32_t v;
         bool present;
         Bucket(){present = false;};
+        Bucket(uint32_t k):k(k), present(true){}
     };
     
     Bucket* table;
     int size;
     int used;
     // Waiting for defining
-    uint32_t hash(const key& key){
-        
+    uint32_t hash(const uint32_t& key){
+        return (key << 3 + key >> 4) % size;
     }
     
 public:
@@ -57,13 +57,46 @@ public:
         return *this;
     }
     
-    void grow(uint32_t size){
+    void grow(){
         Bucket* temp = table;
-        
+        table = new Bucket[2 * size];
+        for(int i = 0; i < size; i++){
+            if(temp[i].present){
+                Bucket* t = temp[i];
+                uint32_t id = hash(t->key);
+                while(table[id].present){
+                    id++;
+                    if(id >= size)
+                        id = 0;
+                }
+                table[id] = t;
+            }
+        }
     }
     
-    
-    void add(key k){
+    void add(uint32_t k){
+        if(size < 2 * used)
+            grow();
         
+        uint32_t id = hash(k);
+        while(table[id].present){
+            id++;
+            if(id >= size)
+                id = 0;
+        }
+        
+        table[i] = new Bucket(k);
     }
+    
+    uint32_t getSize(){
+        return size;
+    }
+};
+
+int main(){
+    HashMapLinearProbing m;
+    for(uint32_t i = 0; i < 100000; i++)
+        m.add(i);
+    
+    cout << m.getSize() << endl;
 }
