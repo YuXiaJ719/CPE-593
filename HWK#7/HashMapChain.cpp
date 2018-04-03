@@ -126,5 +126,6 @@ int main(){
 		m.add(temp);
 	}
 	
+    f.close();
 	m.printHist();
 }
