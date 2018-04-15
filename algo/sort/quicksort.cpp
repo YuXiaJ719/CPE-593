@@ -38,17 +38,16 @@ void quickSort(vector<double> &vec, int start_index, int end_index){
     if(start_index >= end_index - 1)
         return;
     
-    else{
-        for(int i = start_index; i < pivot_index; i++){
-            if(vec[i] <= vec[pivot_index]){
-                smaller_number_index++;
-                swap(vec[smaller_number_index], vec[i]);
-            }
+    for(int i = start_index; i < pivot_index; i++){
+        if(vec[i] <= vec[pivot_index]){
+            smaller_number_index++;
+            swap(vec[smaller_number_index], vec[i]);
         }
-        smaller_number_index++;
-        swap(vec[smaller_number_index], vec[pivot_index]);
     }
-
+    
+    smaller_number_index++;
+    swap(vec[smaller_number_index], vec[pivot_index]);
+    
     quickSort(vec, start_index, smaller_number_index);
     quickSort(vec, smaller_number_index + 1, end_index);
 }

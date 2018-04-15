@@ -95,13 +95,3 @@ int main(){
     f2.close();
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
